@@ -23,18 +23,20 @@ class FactLoader:
         for key, value in data_json["course_id"].items():
             course_data = {
                 "course_id": str(value),
-                "author_sk": get_author_sk(connection=self.connection, author_id_str=data_json["author"][key])[0][0],
+                "author_sk": get_author_sk(connection=self.connection,
+                                           author_id_str=data_json["author"][str(key)])[0][0],
                 "timestamp_sk": get_timestamp_sk(connection=self.connection,
                                                  timestamp_str=data_json["published_timestamp"][key])[0][0],
-                "subject_sk": get_subject_sk(connection=self.connection, subject_str=data_json["subject"][key])[0][0],
-                "is_paid": data_json["is_paid"][key],
-                "price": data_json["price"][key],
-                "num_lectures": data_json["num_lectures"][key],
-                "num_reviews": data_json["num_reviews"][key],
-                "num_subscribers": data_json["num_subscribers"][key],
-                "cont_dur": data_json["content_duration"][key],
-                "level_sk": get_level_sk(connection=self.connection, level_str=data_json["level_sk"][key])[0][0],
-                "course_title": data_json["course_title"][key]
+                "subject_sk": get_subject_sk(connection=self.connection,
+                                             subject_str=data_json["subject"][str(key)])[0][0],
+                "is_paid": data_json["is_paid"][str(key)],
+                "price": data_json["price"][str(key)],
+                "num_lectures": data_json["num_lectures"][str(key)],
+                "num_reviews": data_json["num_reviews"][str(key)],
+                "num_subscribers": data_json["num_subscribers"][str(key)],
+                "cont_dur": data_json["content_duration"][str(key)],
+                "level_sk": get_level_sk(connection=self.connection, level_str=data_json["level_sk"][str(key)])[0][0],
+                "course_title": data_json["course_title"][str(key)]
             }
             new_entries.append(course_data)
 
